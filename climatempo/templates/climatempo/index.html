@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ClIMA TEMPO</title>
+</head>
+<body>
+
+<h1>Consumindo a API de Clima Tempo</h1>
+
+    <form method="GET">
+		   <div class="row">
+			   <div class="form-group col-12">
+				   <input type="search" class="form-control" placeholder="Informe nome da cidade"
+						  name="cidade" value="{{ request.GET.cidade }}">
+			   </div>
+			   <div class="form-group col-12">
+				   <button class=" form-control btn-success">
+					<i class="fas fa-search"></i>
+					Pesquisar
+				   </button>
+			   </div>
+		   </div>
+	   </form>
+
+
+{% if response %}
+    {% for i in response %}<br>
+        ID: {{ i.id }}<br>
+        Cidade: {{ i.name}}<br>
+        Estado: {{ i.state }}<br>
+        Pais: {{ i.country }}<br>
+    {% endfor %}
+
+{% else %}
+    <h4>{{ response.cidade }}Cidade não localizada </h4>
+{% endif %}
+
+</body>
+</html>
